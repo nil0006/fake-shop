@@ -1,0 +1,8 @@
+{
+  "name": "Fake Shop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "3ad58b87"
+}
