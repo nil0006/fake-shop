@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fake-store-d8d7f": {
+      "hosting": {
+        "app": [
+          "fake-store-d8d7f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fake-store-d8d7f"
+  }
+}

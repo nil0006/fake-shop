@@ -1,0 +1,35 @@
+<div class="flex flex-col justify-center items-start px-5 mt-10 mb-8">
+  <span class="text-gray-500 text-base font-semibold">HI FELLA <span class="text-xl">👋</span></span>
+  <span class="text-xl text-black font-semibold"> Welcome to <span class="text-clr"> Remotely.io</span></span>
+</div>
+
+<div class="flex flex-col justify-start items-center w-full h-full">
+  <ion-button expand="block" class="w-11/12 custom-btn font-semibold  normal-case" color="dark" fill="outline" > <img src="../../assets/google.png" class="w-5 h-5 " alt="">&nbsp; &nbsp;Sign Up with Google</ion-button>
+  <ion-button expand="block" class="w-11/12 custom-btn font-semibold  normal-case" color="dark" fill="outline"> <img src="../../assets/facebook.png" class="w-5 h-5" alt="">&nbsp; &nbsp;Sign Up with Facebook</ion-button>
+  <div class="text-black text-lg mt-3">OR</div>
+
+  <div class="w-11/12 mt-8">
+    <label  class="block mb-2 text-sm font-medium text-black">Email</label>
+    <input type="email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 " placeholder="John" [(ngModel)]="email" required>
+</div>
+<div class="w-11/12 mt-8">
+  <label  class="block mb-2 text-sm font-medium text-black">Password</label>
+  <input type="text"  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 " placeholder="Enter Password" [(ngModel)]="password" required>
+</div>
+<div class="w-11/12 mt-8">
+  <label  class="block mb-2 text-sm font-medium text-black">Confirm Password</label>
+  <input type="password"  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 " placeholder="Confirm Password" [(ngModel)]="confirmPassword" required>
+</div>
+  <ion-button class="w-11/12 text-lg text-black font-medium custom-btn normal-case mt-16" expand="block" (click)="register()">Sign Up</ion-button>
+
+</div>
+<div class="flex items-center justify-between p-7">
+<span class="text-black text-base">Already have an account?</span>
+<span class=" text-gray-700 underline text-base" (click)="goToLogin()"> Log In</span>
+</div>
+<ion-toast
+    [isOpen]="isToastOpen"
+    message="Password Must Be Same"
+    [duration]="3000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
