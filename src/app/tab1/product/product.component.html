@@ -1,3 +1,62 @@
-<p>
-  product works!
-</p>
+<ion-content [fullscreen]="true" >
+  <div class="flex justify-between items-center p-4 text-3xl lg:w-3/5 lg:m-auto">
+    <ion-icon name="chevron-back-outline" (click)="back()"></ion-icon>
+    <ion-icon name="share-outline" (click)="share(productData)"></ion-icon>
+  </div>
+  <div class="flex justify-center items-center lg:w-3/5 lg:m-auto">
+    <img [src]="productData?.image" class="w-3/5" alt="">
+  </div>
+  <div class="flex justify-between p-5 lg:w-3/5 lg:m-auto">
+    <div class="flex flex-col w-4/5">
+      <div class="text-xl font-bold">{{productData?.title|titlecase}}</div>
+      <div class="font-medium text-gray-500 flex justify-between w-full pr-3 items-center mt-3">
+        <div>{{productData?.category|titlecase}}</div>&#8226; <div>{{productData?.rating?.rate}} 
+          
+          <ion-icon name="star"
+            class="text-yellow-600 text-sm" *ngFor="let rating of ratingArr"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="bg-green-50 rounded-md flex flex-col justify-center items-center  text-xl font-bold p-2 w-20 h-20 text-green-950">
+    <div>${{productData?.price}}</div>
+    <div class="text-sm">{{discount}}% off</div>  
+    </div>
+  </div>
+  <div class="p-4 lg:w-3/5 lg:m-auto pb-6">
+    {{productData?.description}}
+
+  </div>
+  <div class="px-5 lg:w-3/5 lg:m-auto pb-16" *ngIf="simillerProducts.length">
+    <span class="text-2xl text-black font-bold">Releted items</span>
+    <div class="flex justify-between overflow-x-scroll hideScroll">
+      <div *ngFor="let elec of simillerProducts" (click)="routeToProduct(elec.id)">
+        <ion-card class="bg-gray-100 h-auto w-40 rounded-md">
+          <ion-card-content class="h-80 flex flex-col justify-between items-center px-2 py-2">
+            <div class="bg-white w-full rounded-lg flex justify-center items-center  p-2">
+              <img [src]="elec.image" class="w-11/12 h-auto" alt="">
+            </div>
+            <div class="font-semibold text-base text-center">{{elec.title | titlecase | slice:0:25}}</div>
+            <div class="text-lg font-medium text-center text-red-900 py-2 w-full">
+              USD {{elec.price}}
+            </div>
+            <div class="text-gray-500  w-full text-right flex justify-between items-center"><div>{{elec.rating.rate}} <ion-icon name="star"
+              class="text-yellow-600 text-sm"></ion-icon></div>
+              <div>
+                {{elec.rating.count}} Ratings
+              </div>
+          </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="center" class="w-11/12 flex justify-between items-center" >
+  <ion-fab-button class="w-4/5 text-lg" (click)="addToCart()" id="open-toast">
+    Add to cart
+  </ion-fab-button>
+  <ion-fab-button class="" (click)="cahngeIcon()">
+    <ion-icon [name]="changeIconbool?'heart-outline':'heart'"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-toast trigger="open-toast" message="Item added to cart" [duration]="3000"></ion-toast>

@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div class="flex justify-between items-center p-4 pb-0 text-3xl lg:w-3/5 lg:m-auto">
+    <ion-icon name="chevron-back-outline" (click)="back()"></ion-icon>
+    <div class="w-full text-2xl font-bold"><span (click)="back()">Search</span></div>
+  </div>
+  <div class="p-4"> 
+
+    <div class="flex justify-between items-center">   
+      <label for="voice-search" class="sr-only">Search</label>
+      <div class="relative w-full pr-2">
+          
+          <input type="text" id="voice-search" class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-3 p-2.5  " placeholder="Search items.." [(ngModel)]="searchData">
+          <button type="button" class="absolute inset-y-0 right-0 flex items-center pr-5" (click)="voiceSearch()">
+              <svg class="w-4 h-4 text-gray-500 hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7v3a5.006 5.006 0 0 1-5 5H6a5.006 5.006 0 0 1-5-5V7m7 9v3m-3 0h6M7 1h2a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Z"/>
+              </svg>
+          </button>
+      </div>
+      <ion-button class="  w-11 h-10 rounded-btn-full text-black " (click)="search()">
+        <ion-icon slot="icon-only" name="search-outline" class=""></ion-icon>
+      </ion-button>
+    </div>
+</div> 
+
+<div class="px-5 mt-6 lg:w-3/5 lg:m-auto" *ngIf="displayProduct.length">
+  <div class="border border-gray-500 flex p-4 my-5 rounded-xl" *ngFor="let arrival of displayProduct" (click)="routeToProduct(arrival.id)">
+
+    <div class="w-1/3 rounded-lg flex justify-center items-center mr-4">
+      <img [src]="arrival.image" class="w-40 max-80" [alt]="arrival.category">
+    </div>
+    <div class="flex flex-col justify-between items-start w-2/3">
+      <div class="font-semibold text-lg">{{arrival.title | titlecase | slice:0:25}}...</div>
+      <div class="font-medium text-gray-500 flex justify-between w-4/5 items-center">
+        <div>{{arrival.category|titlecase}}</div>&#8226; <div>{{arrival.rating.rate}} <ion-icon name="star"
+            class="text-yellow-600 text-sm"></ion-icon>
+        </div>
+      </div>
+      <div class="text-lg font-medium text-red-900 pt-3">
+        ${{arrival.price}}
+      </div>
+    </div>
+
+  </div>
+</div>
+</ion-content>

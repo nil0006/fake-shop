@@ -1,16 +1,18 @@
 <ion-content [fullscreen]="true">
   <div class="px-5 py-4 lg:w-3/5 lg:m-auto" >
     <div class="flex justify-between items-center">
-      <ion-avatar class=" w-12 h-12">
+      <ion-avatar class=" w-12 h-12" (click)="routeToProfile()">
         <img alt="Silhouette of a person's head"
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" />
+          [src]="imgSourse" />
       </ion-avatar>
       <div class="flex w-1/4 justify-around ">
-        <ion-button fill="clear" class="border border-black rounded-full w-12 h-12 rounded-btn text-black">
+        <ion-button fill="clear" class="border border-black rounded-full w-12 h-12 rounded-btn text-black" (click)="routeToSearch()">
           <ion-icon slot="icon-only" name="search-outline" class=""></ion-icon>
         </ion-button>
-        <ion-button fill="clear" class="border border-black rounded-full w-12 h-12 text-black">
-          <ion-icon slot="icon-only" name="basket-outline" class=""></ion-icon>
+        <ion-button fill="clear" class="border border-black rounded-full w-12 h-12 text-black" (click)="routeToCart()">
+          
+          <ion-icon slot="icon-only" name="cart-outline" class=""></ion-icon>
+          <ion-badge color="primary text-black p-1" *ngIf="shop.cartData.length" >{{shop.cartData.length}}</ion-badge>
         </ion-button>
 
       </div>
@@ -26,7 +28,7 @@
           <div class=" pt-3">workspace essetials</div>
           <div class="pt-4">
             <div>
-              <ion-button class="text-lg text-black btn normal-case">View Item</ion-button>
+              <ion-button class="text-lg text-black btn normal-case" (click)="routeToProduct(0)">View Item</ion-button>
             </div>
           </div>
         </div>
@@ -37,7 +39,7 @@
   <div class="px-5 mt-6 lg:w-3/5 lg:m-auto">
     <span class="text-2xl text-black font-bold">Catagory</span>
     <div class="flex justify-between overflow-x-scroll hideScroll">
-      <div *ngFor="let cata of catagory">
+      <div *ngFor="let cata of catagory" (click)="goToAllProduct(cata)">
         <ion-card class="bg-gray-100 h-40 w-40 rounded-xl">
           <ion-card-content class="h-full">
             <div class="flex flex-col h-full justify-around items-center text-center">
@@ -53,10 +55,10 @@
   </div>
   <div class="px-5 mt-6 lg:w-3/5 lg:m-auto">
     <span class="text-2xl text-black font-bold">New arrivals</span>
-    <div class="border border-gray-500 flex p-4 my-5 rounded-xl" *ngFor="let arrival of newArrivals">
+    <div class="border border-gray-500 flex p-4 my-5 rounded-xl" *ngFor="let arrival of newArrivals" (click)="routeToProduct(arrival.id)">
 
-      <div class="w-1/3 rounded-lg">
-        <img [src]="arrival.image" class="w-24 h-24" [alt]="arrival.category">
+      <div class="w-1/3 rounded-lg flex justify-center items-center mr-4">
+        <img [src]="arrival.image" class="w-40 max-80" [alt]="arrival.category">
       </div>
       <div class="flex flex-col justify-between items-start w-2/3">
         <div class="font-semibold text-lg">{{arrival.title | titlecase | slice:0:25}}...</div>
@@ -75,11 +77,11 @@
   <div class="px-5 mt-6 lg:w-3/5 lg:m-auto">
     <span class="text-2xl text-black font-bold">Electronics</span>
     <div class="flex justify-between overflow-x-scroll hideScroll">
-      <div *ngFor="let elec of electrodata">
+      <div *ngFor="let elec of electrodata" (click)="routeToProduct(elec.id)">
         <ion-card class="bg-gray-100 h-auto w-40 rounded-md">
-          <ion-card-content class="h-full flex flex-col justify-between items-center px-2 py-2">
+          <ion-card-content class="h-80 flex flex-col justify-between items-center px-2 py-2">
             <div class="bg-white w-full rounded-lg flex justify-center items-center  p-2">
-              <img [src]="elec.image" class="w-11/12 h-20" alt="">
+              <img [src]="elec.image" class="w-11/12 h-auto" alt="">
             </div>
             <div class="font-semibold text-base text-center">{{elec.title | titlecase | slice:0:25}}</div>
             <div class="text-lg font-medium text-center text-red-900 py-2 w-full">

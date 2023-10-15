@@ -15,20 +15,37 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-const firebaseConfig = {
-  apiKey: 'AIzaSyCxWdDrpmuSaxHALjjD4QnucbOwoClCmNE',
-  authDomain: 'fake-store-d8d7f.firebaseapp.com',
-  projectId: 'fake-store-d8d7f',
-  storageBucket: 'fake-store-d8d7f.appspot.com',
-  messagingSenderId: '657157571384',
-  appId: '1:657157571384:web:c67a78936ed373dcfd77cd',
-  measurementId: 'G-TVFYMZH8X8',
-};
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+import { ProductComponent } from './tab1/product/product.component';
+import { AllProductComponent } from './tab1/all-product/all-product.component';
+import { ProfileComponent } from './tab1/profile/profile.component';
+import { SearchComponent } from './tab1/search/search.component';
+import { CartComponent } from './tab1/cart/cart.component';
+import { CheckoutComponent } from './tab1/checkout/checkout.component';
+import { OrderConfirmComponent } from './tab1/order-confirm/order-confirm.component';
+import { LottieModule } from 'ngx-lottie';
+
+
+export function playerFactory() {
+  return import(/* webpackChunkName: 'lottie-web' */ 'lottie-web');
+}
 @NgModule({
-  declarations: [AppComponent,RegisterComponent,LandingComponent,LoginComponent],
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    LandingComponent,
+    LoginComponent,
+    ProductComponent,
+    AllProductComponent,
+    ProfileComponent,
+    SearchComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrderConfirmComponent,
+  ],
   imports: [
     BrowserModule,
-    
+
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -36,8 +53,10 @@ const firebaseConfig = {
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     FormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    NgxUiLoaderModule, // import NgxUiLoaderModule
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

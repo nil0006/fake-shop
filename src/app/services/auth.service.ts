@@ -7,13 +7,15 @@ import {
   GoogleAuthProvider ,
   signInWithPopup,
 } from '@angular/fire/auth'
+import { LocalStorageService } from './local-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private auth:Auth,) { }
+  constructor(private auth:Auth,private localStorage:LocalStorageService,private router:Router) { }
   
   async register(email:string,password:any){
     const user = await createUserWithEmailAndPassword(
@@ -31,5 +33,9 @@ export class AuthService {
        );
     return user;
   }
-  
+    async signOut(){
+       this.auth.signOut();
+       this.localStorage.clear()
+       this.router.navigate([''])
+    }
 }
