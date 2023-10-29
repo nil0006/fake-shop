@@ -8,8 +8,7 @@ I made this project while learning ionic and firabase and I am using the Fake st
 
  - [fake-store-api](https://github.com/keikaavousi/fake-store-api)
  - [Remotely Store Ui Fimga](https://www.figma.com/community/file/1033374920296467805)
- - 
-
+   
 
 
 ## Run the project
