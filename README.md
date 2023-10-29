@@ -1,7 +1,7 @@
 
 # Fake Shop
 
-I made this project while learning ionic and firabase and I am using the Fake store api for the products data and all. I used the firabase for authentication.
+I made this project while learning ionic and firabase and I am using the Fake store api for the products data and all. I used the firabase for authentication. The Apk is locatied in the main directory named as fake-store.apk it is a debug build you can download it and run in your andoid phone or tablet
 
 
 ## Acknowledgements
