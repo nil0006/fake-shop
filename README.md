@@ -4,6 +4,9 @@
 I made this project while learning ionic and firebase and I am using the Fake store api for the products data and all. I used the firebase for authentication. The Apk is locatied in the main directory named as fake-store.apk it is a debug build you can download it and run in your andoid phone or tablet
 
 
+##Download The Apk
+-[Download](https://appsenjoy.com/en/gSB9GaMLDLmUhwK/file)
+
 ## Acknowledgements
 
  - [fake-store-api](https://github.com/keikaavousi/fake-store-api)
